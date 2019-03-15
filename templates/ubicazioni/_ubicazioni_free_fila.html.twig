@@ -1,0 +1,19 @@
+<table class="table">
+    <tbody>
+    {% set col = 8 %}
+    {% for u in ubicazioniLibereFila %}
+        {% if loop.index % col == col %}<tr>{% endif %}
+        <td>
+            <a class="badge
+                    {% if u.articolo is empty %}badge-success{% else %}badge-danger{% endif %}"
+               href="{{ path('ubicazioni_update', {id: u.id}) }}">
+                <h3>{{ u.codice}}</h3>
+            </a>
+            <p>{{ u.articolo }}</p>
+        </td>
+        {% if loop.index % col == 0 %}</tr>{% endif %}
+    {% else %}
+        <tr>Nessuna ubicazione trovata.</tr>
+    {% endfor %}
+    </tbody>
+</table>

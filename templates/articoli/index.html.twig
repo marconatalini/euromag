@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Euromag - Articoli{% endblock %}
+
+{% block head_css %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('css/articoli') }}
+{% endblock %}
+
+{% block body %}
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Codice</th>
+        <th scope="col">Descrizione</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for articolo in articoli %}
+        <tr>
+            <td scope="row">
+                <a href="{{ path('articoli_view', {id: articolo.id}) }}">{{ articolo.codice}}</a>
+            </td>
+            <td>{{ articolo.descrizione}}</td>
+            <td><a href="{{ path('articoli_update', {id: articolo.id}) }}"><i class="fa fa-edit"></i> Modifica</a>
+
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <th scope="row"></th>
+            <td>Nessun articolo trovato</td>
+            <td></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% if articoli.haveToPaginate %}
+    <div class="navigation text-center">
+        {{ pagerfanta(articoli, 'twitter_bootstrap4_translated', {routeName: 'articoli_index_paginated', routeParams: app.request.query.all}) }}
+    </div>
+{% endif %}
+
+{% endblock %}

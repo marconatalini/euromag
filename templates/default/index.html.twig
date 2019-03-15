@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Euromag{% endblock %}
+
+{% block head_css %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('css/home') }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container m-5">
+        <form class="form-inline pb-5" action="{{ path('ubicazioni_index', {page : 1}) }}">
+            <input class="form-control form-control-lg" type="search" name="search" maxlength="13" autocomplete="off"
+                   placeholder="codice..." aria-label="Cerca">
+
+            <button class="btn" type="submit">
+                <span style="font-size: 2em; color: white;">
+                   <i class="fas fa-search"></i>
+                </span>
+            </button>
+        </form>
+
+        <a class="btn btn-success btn-lg" href="{{ path('ubicazioni_free') }}">
+            Ubicazioni LIBERE
+        </a>
+    </div>
+
+{% endblock %}

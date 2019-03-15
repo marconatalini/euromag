@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Aggiungi Articoli{% endblock %}
+
+{% block head_css %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('css/ubicazioni') }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h1>Assegna profilo ad ubicazione {{ ubicazione.codice }}</h1>
+
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
+
+{% block head_js %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('js/ubicazioni_update') }}
+{% endblock %}

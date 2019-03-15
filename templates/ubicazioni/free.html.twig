@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Euromag - libere{% endblock %}
+
+{% block head_css %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('css/ubicazioni') }}
+{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <tbody>
+        {% set col = 8 %}
+        {% for u in ubicazioni %}
+            {% if loop.index % col == col %}<tr>{% endif %}
+            <td>
+                <a class="badge
+                    {% if u.articolo is empty %}badge-success{% else %}badge-danger{% endif %}"
+                   href="{{ path('ubicazioni_update', {id: u.id}) }}">
+                    <h3>{{ u.codice}}</h3>
+                </a>
+                <p>{{ u.articolo }}</p>
+            </td>
+            {% if loop.index % col == 0 %}</tr>{% endif %}
+        {% else %}
+            <tr>Nessuna ubicazione trovata.</tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% if ubicazioni.haveToPaginate is defined and ubicazioni.haveToPaginate %}
+        <div class="navigation text-center">
+            {{ pagerfanta(ubicazioni, 'twitter_bootstrap4_translated', {routeName: 'ubicazioni_free_paginated', routeParams: app.request.query.all}) }}
+        </div>
+    {% endif %}
+{% endblock %}

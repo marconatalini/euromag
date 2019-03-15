@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Aggiungi Articoli{% endblock %}
+
+{% block head_css %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('css/articoli') }}
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <dl class="row">
+        <dt class="col-sm-3">codice</dt>
+        <dd class="col-sm-9"><h1>{{ articolo.codice }}</h1></dd>
+        <dt class="col-sm-3">descrizione</dt>
+        <dd class="col-sm-9">{{ articolo.descrizione}}</dd>
+        <dt class="col-sm-3">nota</dt>
+        <dd class="col-sm-9">{{ articolo.note }}</dd>
+        <dt class="col-sm-3">immagine</dt>
+        <dt class="col-sm-12"><img width="100%" src="{{ asset("images/#{articolo.codice}.jpg") }}"
+                                  alt="{{ articolo.codice }} immagine" onerror="this.onerror=null; this.src='{{ absolute_url(asset('images/noimage.jpg')) }}'" /></dt>
+        <dt class="col-sm-3">ubicazioni</dt>
+        <dd class="col-sm-9">{{ include('articoli/_articolo_ubicazioni.html.twig') }}</dd>
+    </dl>
+</div>
+
+{% endblock %}

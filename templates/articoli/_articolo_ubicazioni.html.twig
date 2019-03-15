@@ -1,0 +1,10 @@
+{% if not articolo.ubicazioni.empty %}
+<h3 class="post-tags">
+    <p>Ubicato in</p>
+    {% for ubicazione in articolo.ubicazioni %}
+    <a href="{{ path('ubicazioni_update', {id: ubicazione.id}) }}" class="label label-default">
+        <span class="badge badge-success">{{ ubicazione.codice}}</span>
+    </a>
+    {% endfor %}
+</h3>
+{% endif %}

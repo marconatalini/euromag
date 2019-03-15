@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Euromag - Ubicazioni{% endblock %}
+
+{% block head_css %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('css/ubicazioni') }}
+{% endblock %}
+
+{% block body %}
+    {% set count = 0 %}
+    {% set lastFila = 0 %}
+    <table class="table">
+        <tbody>
+        {% set col = 8 %}
+        {% for u in ubicazioni %}
+            {% if loop.index % col == col %}<tr>{% endif %}
+            <td>
+                <a class="badge
+                    {% if u.articolo is empty %}badge-success{% else %}badge-danger{% endif %}"
+                   href="{{ path('ubicazioni_update', {id: u.id}) }}">
+                    <h3>{{ u.codice}}</h3>
+                </a>
+                <p>{{ u.articolo }}</p>
+            </td>
+            {% if loop.index % col == 0 %}</tr>{% endif %}
+            {% set count = count + 1 %}
+            {% set lastFila = u.fila %}
+        {% else %}
+            <tr>Nessuna ubicazione trovata.</tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% if count == 1 %}
+        <h1>Ubicazioni libere in fila {{ lastFila }}</h1>
+        {{ include ('ubicazioni/_ubicazioni_free_fila.html.twig', {fila : lastFila}) }}
+    {% endif %}
+
+    {% if ubicazioni.haveToPaginate is defined and ubicazioni.haveToPaginate %}
+        <div class="navigation text-center">
+            {{ pagerfanta(ubicazioni, 'twitter_bootstrap4_translated', {routeName: 'ubicazioni_index_paginated', routeParams: app.request.query.all}) }}
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Euromag - Azioni{% endblock %}
+
+{% block head_css %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('css/articoli') }}
+{% endblock %}
+
+{% block body %}
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th scope="col">Data Ora</th>
+        <th scope="col">Utente</th>
+        <th scope="col">Azione</th>
+        <th scope="col">IP</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for log in logs %}
+        <tr>
+            <td scope="row">{{ log.timestamp |date("m/d/y H:i:s")}}</td>
+            <td>{{ log.user[:60] }} ...</td>
+            <td>{{ log.descrizione }}</td>
+            <td>{{ log.ip }}</td>
+        </tr>
+    {% else %}
+        <tr>
+            <th scope="row"></th>
+            <td>Nessuna azione trovata</td>
+            <td></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% if logs.haveToPaginate %}
+    <div class="navigation text-center">
+        {{ pagerfanta(articoli, 'twitter_bootstrap4_translated', {routeName: 'logs_index_paginated', routeParams: app.request.query.all}) }}
+    </div>
+{% endif %}
+
+{% endblock %}

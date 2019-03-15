@@ -1,12 +1,133 @@
 <!DOCTYPE html>
-<html>
+<html class="h-100">
     <head>
-        <meta charset="UTF-8">
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block head_css %}
+            {{ encore_entry_link_tags('css/app') }}
+            {#<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+            <style>.footer {background-color: #f5f5f5;}</style>#}
+        {% endblock %}
+
     </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    <body class="d-flex flex-column h-100">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('home') }}"><i class="fas fa-home"></i> Home </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-map-marker-alt"></i> Ubicazioni
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ path('ubicazioni_index') }}">Indice</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ path('ubicazioni_free') }}">Libere</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ path('ubicazioni_pulisci_doppie') }}">Pulizia</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-align-justify"></i> 1-10
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {% for i in 1..10 %}
+                                    <a class="dropdown-item" href="{{ path('ubicazioni_fila', {fila:i}) }}">{{ i }}</a>
+                                {% endfor %}
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-align-justify"></i> 11-20
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {% for i in 11..20 %}
+                                    <a class="dropdown-item" href="{{ path('ubicazioni_fila', {fila:i}) }}">{{ i }}</a>
+                                {% endfor %}
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-align-justify"></i> 21-30
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {% for i in 21..30 %}
+                                    <a class="dropdown-item" href="{{ path('ubicazioni_fila', {fila:i}) }}">{{ i }}</a>
+                                {% endfor %}
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown ml-4">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-barcode"></i> Articoli
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ path('articoli_index') }}">Indice</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ path('articoli_new') }}">Aggiungi</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item ml-4">
+                            <a class="nav-link" href="{{ path('logs_index') }}"><i class="fas fa-exclamation-triangle"></i> Azioni</a>
+                        </li>
+                    </ul>
+                    {#<form class="form-inline my-2 my-lg-0" action="{{ path('ubicazioni_index', {page :1}) }}">
+                        <input class="form-control mr-sm-2" type="search" name="search" placeholder="Cerca profilo" aria-label="Cerca">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>
+                    </form>#}
+
+                    {% if controller_name is defined %}
+                        <form class="form-inline my-2 my-lg-0" action="
+                        {% if controller_name == 'ArticoliController' %} {{ path('articoli_index', {page :1}) }}
+                        {% elseif controller_name == 'UbicazioniController'%} {{ path('ubicazioni_index', {page : 1}) }}
+                        {% endif %}">
+                            <input class="form-control mr-sm-2" type="search" name="search" placeholder="Cerca" aria-label="Cerca">
+                            {#<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>#}
+                            <button class="btn" type="submit">
+                <span style="font-size: 1.4em; color: white;">
+                   <i class="fas fa-search"></i>
+                </span>
+                            </button>
+                        </form>
+                    {% endif %}
+                </div>
+            </nav>
+        </header>
+        <main class="flex-shrink-0" role="main">
+            <div class="container-fluid">
+                {# ...or you can read and display every flash message available #}
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }}" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+            {% block body %}
+            {% endblock %}
+            </div>
+        </main>
+        <footer class="footer mt-auto py-3 text-right">
+            <div class="container">
+                <span class="text-muted text-right">WEBapp realizzata da Marco Natalini 02/2019</span>
+            </div>
+        </footer>
+
+    {% block head_js %}
+        {{ encore_entry_script_tags('js/app') }}
+        {#<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>#}
+    {% endblock %}
     </body>
 </html>

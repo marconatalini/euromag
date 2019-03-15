@@ -1,0 +1,14 @@
+<nav class="col-md-1 d-none d-md-block bg-light sidebar">
+    <div class="sidebar-sticky">
+        {% if not elencoFile is empty %}
+        <ul class="nav flex-column">
+            <p>FILE</p>
+            {% for res in elencoFile %}
+                <li class="nav-item">
+                    <a href="{{ path('ubicazioni_fila', {fila: res.fila}) }}"><h3>{{ res.fila }}</h3></a>
+                </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</nav>
