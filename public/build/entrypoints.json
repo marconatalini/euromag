@@ -1,0 +1,48 @@
+{
+  "entrypoints": {
+    "js/app": {
+      "js": [
+        "/build/runtime.be789d2f.js",
+        "/build/js/app.f362c9de.js"
+      ]
+    },
+    "js/ubicazioni_update": {
+      "js": [
+        "/build/runtime.be789d2f.js",
+        "/build/js/ubicazioni_update.d6810ab3.js"
+      ]
+    },
+    "css/app": {
+      "js": [
+        "/build/runtime.be789d2f.js"
+      ],
+      "css": [
+        "/build/css/app.96d6fdc2.css"
+      ]
+    },
+    "css/home": {
+      "js": [
+        "/build/runtime.be789d2f.js"
+      ],
+      "css": [
+        "/build/css/home.5211292f.css"
+      ]
+    },
+    "css/ubicazioni": {
+      "js": [
+        "/build/runtime.be789d2f.js"
+      ],
+      "css": [
+        "/build/css/ubicazioni.88956ae5.css"
+      ]
+    },
+    "css/articoli": {
+      "js": [
+        "/build/runtime.be789d2f.js"
+      ],
+      "css": [
+        "/build/css/articoli.c2fa68c3.css"
+      ]
+    }
+  }
+}
