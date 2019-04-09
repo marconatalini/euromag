@@ -7,8 +7,8 @@ use App\Events;
 use App\Form\UbicazioniForm;
 use App\Repository\UbicazioniRepository;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
-use Pagerfanta\Adapter\ArrayAdapter;
-use Pagerfanta\Pagerfanta;
+use http\Exception;
+use Mpdf\Mpdf;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
@@ -103,8 +103,6 @@ class UbicazioniController extends AbstractController
         return $this->render("default/index.html.twig");
     }
 
-
-
     /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -177,5 +175,38 @@ class UbicazioniController extends AbstractController
             'form' => $form->createView(),
             'ubicazione' => $ubic,
         ));
+    }
+
+    /**
+     * @Route("/pdf", name="ubicazioni_pdf")
+     */
+    public function pdf(UbicazioniRepository $ubicazioniRepository)
+    {
+        $ubicazioni = $ubicazioniRepository->findAllpdf();
+
+        $html = $this->renderView( 'ubicazioni/pdf.html.twig',[
+            'ubicazioni' => $ubicazioni,
+        ]);
+
+        /*$response = new Response();
+        $response->setContent($html);
+        $response->headers->set('Content-Type', 'text/plain');
+
+        return $response;*/
+
+        $mpdf = new Mpdf();
+
+        try {
+            // Write some HTML code:
+            $mpdf->WriteHTML($html);
+
+            // Output a PDF file directly to the browser
+            $mpdf->Output();
+            //$mpdf->Output('Ubicazioni.pdf', \Mpdf\Output\Destination::DOWNLOAD);
+        } catch (Exception $e) {
+            return new Response($html);
+        }
+
+        return new Response($html);
     }
 }

@@ -37,6 +37,20 @@ class UbicazioniRepository extends ServiceEntityRepository
         return $this->createPaginator($qb->getQuery(), $page);
     }
 
+    public function findAllpdf()
+    {
+        return $this->createQueryBuilder('u')
+            ->addSelect('a')
+            ->leftJoin('u.articolo', 'a')
+            ->orderBy('u.fila', 'ASC')
+            ->addOrderBy('u.colonna', 'ASC')
+            ->addOrderBy('u.piano', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+
+    }
+
     public function findUbicazioniFila(int $fila=1)
     {
         $qb = $this->createQueryBuilder('u')

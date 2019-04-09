@@ -14,7 +14,7 @@
         <tbody>
         {% set col = 8 %}
         {% for u in ubicazioni %}
-            {% if loop.index % col == col %}<tr>{% endif %}
+            {% if loop.index % col == 1 %}<tr>{% endif %}
             <td>
                 <a class="badge
                     {% if u.articolo is empty %}badge-success{% else %}badge-danger{% endif %}"

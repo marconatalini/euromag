@@ -1,0 +1,47 @@
+<style type="text/css">
+    body {
+        font-family: sans-serif;
+        font-size: 9pt;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .newpage{
+        margin-top: 20mm;
+        page-break-before: always;
+    }
+
+    th, td{
+        border-bottom: 1px solid gray;
+        text-align: left;
+    }
+
+    tr:nth-child(even){
+        background-color: #e1f1ff;
+    }
+
+
+</style>
+
+{% set count = 0 %}
+{% set lastFila = 1 %}
+<table>
+    <tbody>
+    {% set col = 4 %}
+
+    {% for u in ubicazioni %}
+        {% if loop.index % col == 1 %}<tr>{% endif %}
+        {% if lastFila != u.fila %}<tr><td class="newpage">{% else %}<td>{% endif %}
+        <h3>{{ u.codice }}</h3></td>
+        <td><p>{{ u.articolo }}</p></td>
+        {% if loop.index % col == 0 %}</tr>{% endif %}
+        {% set count = count + 1 %}
+        {% set lastFila = u.fila %}
+    {% else %}
+        <tr>Nessuna ubicazione trovata.</tr>
+    {% endfor %}
+    </tbody>
+</table>
