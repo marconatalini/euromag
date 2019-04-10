@@ -188,13 +188,11 @@ class UbicazioniController extends AbstractController
             'ubicazioni' => $ubicazioni,
         ]);
 
-        /*$response = new Response();
-        $response->setContent($html);
-        $response->headers->set('Content-Type', 'text/plain');
+        $mpdf = new Mpdf([
+            'tempDir' => __DIR__ . '/../../var/mpdf'
+        ]);
 
-        return $response;*/
-
-        $mpdf = new Mpdf();
+        //var_dump($mpdf->tempDir);die;
 
         try {
             // Write some HTML code:
