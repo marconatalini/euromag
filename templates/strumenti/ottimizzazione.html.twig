@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html class="h-100" lang="it">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Risultato Ottimizzazione</title>
+    {% block head_css %}
+        {{ encore_entry_link_tags('css/app') }}
+    {% endblock %}
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('home') }}"><i class="fas fa-home"></i> Home </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<main>
+    {% if result %}
+        {% for barra in result %}
+            <ul class="list-group list-group-horizontal">
+                <p class="m-3">Barra {{ loop.index }}: </p>
+                {% for pezzo in barra %}
+                    <li class="list-group-item">
+                        {{ pezzo }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    {% else %}
+        <p>Nessuna ottimizzazione!</p>
+    {% endif %}
+</main>
+<footer class="footer mt-auto py-3 text-right">
+    <div class="container">
+        <span class="text-muted text-right">WEBapp realizzata da Marco Natalini 02/2019</span>
+    </div>
+</footer>
+</body>

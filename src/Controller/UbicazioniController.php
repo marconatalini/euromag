@@ -7,12 +7,10 @@ use App\Events;
 use App\Form\UbicazioniForm;
 use App\Repository\UbicazioniRepository;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
-use http\Exception;
 use Mpdf\Mpdf;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -64,7 +62,7 @@ class UbicazioniController extends AbstractController
         return $this->render('ubicazioni/index.html.twig', [
             'controller_name' => 'UbicazioniController',
             'ubicazioni' => $ubics,
-            'elencoFile' => $ubicazioni->elencoFile()
+//            'elencoFile' => $ubicazioni->elencoFile()
         ]);
     }
 
@@ -80,7 +78,7 @@ class UbicazioniController extends AbstractController
         return $this->render('ubicazioni/free.html.twig', [
             'controller_name' => 'UbicazioniController',
             'ubicazioni' => $libere,
-            'elencoFile' => $ubicazioni->elencoFile()
+//            'elencoFile' => $ubicazioni->elencoFile()
         ]);
     }
 

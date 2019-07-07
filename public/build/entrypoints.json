@@ -2,46 +2,63 @@
   "entrypoints": {
     "js/app": {
       "js": [
-        "/build/runtime.be789d2f.js",
-        "/build/js/app.f362c9de.js"
+        "/build/runtime.js",
+        "/build/js/app.js"
       ]
     },
     "js/ubicazioni_update": {
       "js": [
-        "/build/runtime.be789d2f.js",
-        "/build/js/ubicazioni_update.d6810ab3.js"
+        "/build/runtime.js",
+        "/build/js/ubicazioni_update.js"
+      ]
+    },
+    "js/optimize": {
+      "js": [
+        "/build/runtime.js",
+        "/build/js/optimize.js"
+      ],
+      "css": [
+        "/build/js/optimize.css"
       ]
     },
     "css/app": {
       "js": [
-        "/build/runtime.be789d2f.js"
+        "/build/runtime.js"
       ],
       "css": [
-        "/build/css/app.96d6fdc2.css"
+        "/build/css/app.css"
       ]
     },
     "css/home": {
       "js": [
-        "/build/runtime.be789d2f.js"
+        "/build/runtime.js"
       ],
       "css": [
-        "/build/css/home.5211292f.css"
+        "/build/css/home.css"
       ]
     },
     "css/ubicazioni": {
       "js": [
-        "/build/runtime.be789d2f.js"
+        "/build/runtime.js"
       ],
       "css": [
-        "/build/css/ubicazioni.88956ae5.css"
+        "/build/css/ubicazioni.css"
       ]
     },
     "css/articoli": {
       "js": [
-        "/build/runtime.be789d2f.js"
+        "/build/runtime.js"
       ],
       "css": [
-        "/build/css/articoli.c2fa68c3.css"
+        "/build/css/articoli.css"
+      ]
+    },
+    "css/optimize": {
+      "js": [
+        "/build/runtime.js"
+      ],
+      "css": [
+        "/build/css/optimize.css"
       ]
     }
   }

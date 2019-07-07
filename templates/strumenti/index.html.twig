@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ottimizzatore{% endblock %}
+
+{% block head_css %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('js/optimize') }}
+{% endblock %}
+
+{% block body %}
+    <h3 class="h3">Ottimizzazione di taglio</h3>
+    <form method="post">
+        <div class="form-row mb-3">
+            <label for="LunghezzaBarre" class="col-form-label">Barre</label>
+            <input id="LunghezzaBarre" name="lunghezzaBarre" type="number" min="1900" max="6500" value="6000"
+                   placeholder="mm">
+            <label for="scartoTeste" class="col-form-label">Scarto teste</label>
+            <input id="scartoTeste" name="scartoTeste" type="number" min="0" max="200" value="50" placeholder="mm">
+            <button type="submit" class="btn btn-primary ml-2">Ottimizza</button>
+        </div>
+        <div id="titoloListaPezzi"></div>
+        <div id="listaMisure" class="list-group ml-3" data-prototype="<div id=&quot;articolo___index__&quot; class=&quot;form-row mb-2&quot;><label for=&quot;misura___index__&quot; class=&quot;col-form-label&quot;>misura</label><input id=&quot;misura___index__&quot; type=&quot;number&quot; name=&quot;misure[__index__][lunghezza]&quot; max=&quot;6000&quot; min=&quot;100&quot; placeholder=&quot;mm&quot;><label for=&quot;pezzi___index__&quot; class=&quot;col-form-label&quot;>pezzi</label><input id=&quot;pezzi___index__&quot; type=&quot;number&quot; name=&quot;misure[__index__][quantita]&quot; max=&quot;99&quot; min=&quot;1&quot; value=&quot;1&quot; placeholder=&quot;mm&quot;></i></a></div>">
+        </div>
+    </form>
+{% endblock %}
+
+{% block head_js %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('js/optimize') }}
+{% endblock %}

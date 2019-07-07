@@ -106,7 +106,16 @@
       <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
       <path value="$PROJECT_DIR$/vendor/symfony/web-server-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/test-pack" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/setasign/fpdi" />
+      <path value="$PROJECT_DIR$/vendor/mpdf/mpdf" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
     </include_path>
+  </component>
+  <component name="PhpProjectServersManager">
+    <servers>
+      <server host="10.0.2.2" id="6032b684-3f31-4cb4-84f9-86cce5286af0" name="homestead" port="9000" />
+    </servers>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />
 </project>

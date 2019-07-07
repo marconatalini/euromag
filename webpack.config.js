@@ -51,11 +51,13 @@ Encore
          */
     .addEntry('js/app', './assets/js/app.js')
     .addEntry('js/ubicazioni_update', './assets/js/ubicazioni_update.js')
+    .addEntry('js/optimize', './assets/js/optimize.js')
 
     .addStyleEntry('css/app', './assets/css/app.css')
     .addStyleEntry('css/home', './assets/css/home.css')
     .addStyleEntry('css/ubicazioni', './assets/css/ubicazioni.css')
     .addStyleEntry('css/articoli', './assets/css/articoli.css')
+    .addStyleEntry('css/optimize', './assets/css/optimize.css')
 
     //.addStyleEntry('css/app', ['./assets/css/app.css'])
     //.addEntry('page1', './assets/js/page1.js')
@@ -74,4 +76,16 @@ Encore
         })
 ;
 
-module.exports = Encore.getWebpackConfig();
+
+
+// Use polling instead of inotify
+const config = Encore.getWebpackConfig();
+config.watchOptions = {
+        poll: true,
+};
+
+// Export the final configuration
+module.exports = config;
+
+
+// module.exports = Encore.getWebpackConfig();
