@@ -1,7 +1,7 @@
 var Encore = require('@symfony/webpack-encore');
 
 Encore
-    // directory where compiled assets will be stored
+// directory where compiled assets will be stored
     .setOutputPath('public/build/')
     // public path used by the web server to access the output path
     .setPublicPath('/build')
@@ -73,7 +73,7 @@ Encore
 
         // only copy files matching this pattern
         pattern: /\.(png|jpg|jpeg|svg)$/
-        })
+    })
 ;
 
 
@@ -81,7 +81,7 @@ Encore
 // Use polling instead of inotify
 const config = Encore.getWebpackConfig();
 config.watchOptions = {
-        poll: true,
+    poll: true,
 };
 
 // Export the final configuration
