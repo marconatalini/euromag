@@ -9,19 +9,17 @@
 
 {% block body %}
 
-    <div class="container m-5">
-        <form class="form-inline pb-5" action="{{ path('ubicazioni_index', {page : 1}) }}">
-            <input class="form-control form-control-lg" type="search" name="search" maxlength="13" autocomplete="off"
-                   placeholder="codice..." aria-label="Cerca">
+    <div class="form-container mt-auto">
+        <form class="form" action="{{ path('ubicazioni_index', {page : 1}) }}">
+            <input class="form-control form-control-lg" id="formInputCerca" type="search" name="search"
+                   autocomplete="off" placeholder="codice..." aria-label="Cerca">
 
-            <button class="btn" type="submit">
-                <span style="font-size: 2em; color: white;">
-                   <i class="fas fa-search"></i>
-                </span>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">
+                Trova
             </button>
         </form>
 
-        <a class="btn btn-success btn-lg" href="{{ path('ubicazioni_free') }}">
+        <a class="btn btn-success btn-lg btn-block mt-4" href="{{ path('ubicazioni_free') }}">
             Ubicazioni LIBERE
         </a>
     </div>

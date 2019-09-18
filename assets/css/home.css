@@ -2,3 +2,24 @@ body {
     background: url(../images/IMG_8254_res.jpg) no-repeat center fixed;
     background-size: cover;
 }
+
+#background-image{
+    width: auto;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -99;
+}
+
+.form-container{
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+.btn-search{
+    color: white;
+    font-size: 2em;
+}

@@ -16,12 +16,13 @@
     </head>
     <body class="d-flex flex-column h-100">
         <header>
-            <nav class="navbar navbar-expand-lg navbar-dark">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <nav class="navbar navbar-expand-md navbar-dark mb-4">
+                <a class="navbar-brand" href="{{ path('home') }}"><i class="fas fa-home"></i> Home </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('home') }}"><i class="fas fa-home"></i> Home </a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-map-marker-alt"></i> Ubicazioni
@@ -85,28 +86,10 @@
                             <a class="nav-link" href="{{ path('logs_index') }}"><i class="fas fa-exclamation-triangle"></i> Azioni</a>
                         </li>
                     </ul>
-                    {#<form class="form-inline my-2 my-lg-0" action="{{ path('ubicazioni_index', {page :1}) }}">
-                        <input class="form-control mr-sm-2" type="search" name="search" placeholder="Cerca profilo" aria-label="Cerca">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>
-                    </form>#}
-
-                    {% if controller_name is defined %}
-                        <form class="form-inline my-2 my-lg-0" action="
-                        {% if controller_name == 'ArticoliController' %} {{ path('articoli_index', {page :1}) }}
-                        {% elseif controller_name == 'UbicazioniController'%} {{ path('ubicazioni_index', {page : 1}) }}
-                        {% endif %}">
-                            <input class="form-control mr-sm-2" type="search" name="search" placeholder="Cerca" aria-label="Cerca">
-                            {#<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>#}
-                            <button class="btn" type="submit">
-                <span style="font-size: 1.4em; color: white;">
-                   <i class="fas fa-search"></i>
-                </span>
-                            </button>
-                        </form>
-                    {% endif %}
                 </div>
             </nav>
         </header>
+
         <main class="flex-shrink-0" role="main">
             <div class="container-fluid">
                 {# ...or you can read and display every flash message available #}
