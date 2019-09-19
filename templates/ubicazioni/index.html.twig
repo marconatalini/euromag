@@ -8,31 +8,28 @@
 {% endblock %}
 
 {% block body %}
+
     {% set count = 0 %}
     {% set lastFila = 0 %}
-    <table class="table">
-        <tbody>
-        {% set col = 8 %}
-        {% for u in ubicazioni %}
-            {% if loop.index % col == 1 %}<tr>{% endif %}
-            <td>
+    <div class="d-flex flex-wrap">
+        {% for u in ubicazioni  %}
+            <div class="ubicazione">
                 <a class="badge
                     {% if u.articolo is empty %}badge-success{% else %}badge-danger{% endif %}"
-                   href="{{ path('ubicazioni_update', {id: u.id}) }}">
-                    <h3>{{ u.codice}}</h3>
+                  href="{{ path('ubicazioni_update', {id: u.id}) }}">
+                    <h3>{{ u.codice }}</h3>
                 </a>
                 <p>{{ u.articolo }}</p>
-            </td>
-            {% if loop.index % col == 0 %}</tr>{% endif %}
+            </div>
             {% set count = count + 1 %}
             {% set lastFila = u.fila %}
         {% else %}
             <tr>Nessuna ubicazione trovata.</tr>
         {% endfor %}
-        </tbody>
-    </table>
+    </div>
+
     {% if count == 1 %}
-        <h1>Ubicazioni libere in fila {{ lastFila }}</h1>
+        <h3>Ubicazioni libere in fila {{ lastFila }}</h3>
         {{ include ('ubicazioni/_ubicazioni_free_fila.html.twig', {fila : lastFila}) }}
     {% endif %}
 

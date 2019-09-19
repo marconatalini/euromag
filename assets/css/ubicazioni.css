@@ -7,3 +7,12 @@ body {
 .table{
     color: inherit;
 }
+
+.ubicazione {
+    margin: 10px;
+}
+
+.badge:hover{
+    transform-origin: center;
+    transform: scale(1.25);
+}
