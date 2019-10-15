@@ -17,13 +17,12 @@
 
     <div class="d-flex flex-wrap">
         {% for articolo in articoli %}
-            <div class="card mr-2 mb-2">
+            <div class="card">
                 <div class="card-body bg-dark">
                     <h5 class="card-title">{{ articolo.codice }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{{ articolo.descrizione }}</h6>
-                    <a href="{{ path('ubicazioni_index', {search: articolo.codice}) }}" class="card-link"><i class="fas fa-search"></i></a>
-                    <a href="{{ path('articoli_update', {id: articolo.id}) }}" class="card-link"><i class="fas fa-edit"></i></a>
-                    {#<a href="{{ path('articoli_update', {id: articolo.id}) }}"><i class="fa fa-edit"></i> Modifica</a>#}
+                    <p class="card-subtitle mb-2 text-muted">{{ articolo.descrizione }}</p>
+                    <a href="{{ path('ubicazioni_index', {search: articolo.codice}) }}" class="card-link">trova</a>
+                    <a href="{{ path('articoli_update', {id: articolo.id}) }}" class="card-link">modifica</a>
                 </div>
             </div>
         {% else %}
