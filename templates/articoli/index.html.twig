@@ -8,39 +8,33 @@
 {% endblock %}
 
 {% block body %}
-<table class="table table-hover">
-    <thead>
-    <tr>
-        <th scope="col">Codice</th>
-        <th scope="col">Descrizione</th>
-        <th scope="col"></th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for articolo in articoli %}
-        <tr>
-            <td scope="row">
-                <a href="{{ path('articoli_view', {id: articolo.id}) }}">{{ articolo.codice}}</a>
-            </td>
-            <td>{{ articolo.descrizione}}</td>
-            <td><a href="{{ path('articoli_update', {id: articolo.id}) }}"><i class="fa fa-edit"></i> Modifica</a>
 
-            </td>
-        </tr>
-    {% else %}
-        <tr>
-            <th scope="row"></th>
-            <td>Nessun articolo trovato</td>
-            <td></td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+    <form class="form-inline mb-2">
+        <input class="form-control col-8 col-md-4" id="formInputCerca" type="search" name="search" autocomplete="off"
+               placeholder="codice..." aria-label="Cerca">
+        <button class="btn btn-primary ml-2" type="submit">Trova</button>
+    </form>
 
-{% if articoli.haveToPaginate %}
-    <div class="navigation text-center">
-        {{ pagerfanta(articoli, 'twitter_bootstrap4_translated', {routeName: 'articoli_index_paginated', routeParams: app.request.query.all}) }}
+    <div class="d-flex flex-wrap">
+        {% for articolo in articoli %}
+            <div class="card mr-2 mb-2">
+                <div class="card-body bg-dark">
+                    <h5 class="card-title">{{ articolo.codice }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ articolo.descrizione }}</h6>
+                    <a href="{{ path('ubicazioni_index', {search: articolo.codice}) }}" class="card-link"><i class="fas fa-search"></i></a>
+                    <a href="{{ path('articoli_update', {id: articolo.id}) }}" class="card-link"><i class="fas fa-edit"></i></a>
+                    {#<a href="{{ path('articoli_update', {id: articolo.id}) }}"><i class="fa fa-edit"></i> Modifica</a>#}
+                </div>
+            </div>
+        {% else %}
+            <h3>Nessun articolo trovato.</h3>
+        {% endfor %}
     </div>
-{% endif %}
+
+    {% if articoli.haveToPaginate %}
+        <div class="navigation text-center">
+            {{ pagerfanta(articoli, 'twitter_bootstrap4_translated', {routeName: 'articoli_index_paginated', routeParams: app.request.query.all}) }}
+        </div>
+    {% endif %}
 
 {% endblock %}
