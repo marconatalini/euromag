@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Euromag - Articoli{% endblock %}
+{% block title %}Euromag - Persiane{% endblock %}
 
 {% block head_css %}
     {{ parent() }}
@@ -16,13 +16,14 @@
     </form>
 
     <div class="d-flex flex-wrap">
-        {% for articolo in articoli %}
+        {% for articolo in persiane %}
             <div class="card">
                 <div class="card-body bg-dark">
                     <h5 class="card-title">{{ articolo.codice }}</h5>
                     <p class="card-subtitle mb-2 text-muted">{{ articolo.descrizione }}</p>
-                    <a href="{{ path('ubicazioni_index', {search: articolo.codice}) }}" class="h3 card-link"><i class="fas fa-search"></i></a>
-                    <a href="{{ path('articoli_update', {id: articolo.id}) }}" class="h3 card-link"><i class="far fa-edit"></i></a>
+                    <p class="card-body ">pezzi {{ articolo.pezzi }} <a class="h3" href="{{ path('persiane_update', {id: articolo.id}) }}"><i class="far fa-edit"></i></a>
+                    </p>
+                    {#<a href="{{ path('ubicazioni_index', {search: articolo.codice}) }}" class="card-link">trova</a>#}
                 </div>
             </div>
         {% else %}
@@ -30,9 +31,9 @@
         {% endfor %}
     </div>
 
-    {% if articoli.haveToPaginate %}
+    {% if persiane.haveToPaginate %}
         <div class="navigation text-center">
-            {{ pagerfanta(articoli, 'twitter_bootstrap4_translated', {routeName: 'articoli_index_paginated', routeParams: app.request.query.all}) }}
+            {{ pagerfanta(persiane, 'twitter_bootstrap4_translated', {routeName: 'persiane_index_paginated', routeParams: app.request.query.all}) }}
         </div>
     {% endif %}
 

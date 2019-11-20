@@ -4,11 +4,12 @@
 
 {% block head_css %}
     {{ parent() }}
-    {{ encore_entry_link_tags('css/articoli') }}
+    {#{{ encore_entry_link_tags('css/articoli') }}#}
+    {{ encore_entry_link_tags('js/optimize') }}
 {% endblock %}
 
 {% block body %}
-<table class="table table-hover">
+<table class="table">
     <thead>
     <tr>
         <th scope="col">Data Ora</th>
@@ -20,8 +21,8 @@
     <tbody>
     {% for log in logs %}
         <tr>
-            <td scope="row">{{ log.timestamp |date("m/d/y H:i:s")}}</td>
-            <td>{{ log.user[:60] }} ...</td>
+            <td scope="row">{{ log.timestamp |date("d/m/y H:i:s")}}</td>
+            <td>{{ log.user[20:] }} ...</td>
             <td>{{ log.descrizione }}</td>
             <td>{{ log.ip }}</td>
         </tr>

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Aggiungi Persiana{% endblock %}
+
+{% block head_css %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('css/articoli') }}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>{{ formTitle }}</h1>
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+</div>
+{% endblock %}

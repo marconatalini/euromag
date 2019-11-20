@@ -50,4 +50,18 @@ final class Events
      * @var string
      */
     public const ARTICOLO_MODIFICATO = 'articolo.modificato';
+
+    /**
+     * @Event("Symfony\Component\EventDispatcher\GenericEvent")
+     *
+     * @var string
+     */
+    public const PERSIANA_AGGIUNTA = 'persiana.aggiunta';
+
+    /**
+     * @Event("Symfony\Component\EventDispatcher\GenericEvent")
+     *
+     * @var string
+     */
+    public const PERSIANA_MOVIMENTATA = 'persiana.movimentata';
 }
