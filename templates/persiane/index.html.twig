@@ -17,19 +17,36 @@
 
     <div class="d-flex flex-wrap">
         {% for articolo in persiane %}
-            <div class="card">
-                <div class="card-body bg-dark">
-                    <h5 class="card-title">{{ articolo.codice }}</h5>
-                    <p class="card-subtitle mb-2 text-muted">{{ articolo.descrizione }}</p>
-                    <p class="card-body ">pezzi {{ articolo.pezzi }} <a class="h3" href="{{ path('persiane_update', {id: articolo.id}) }}"><i class="far fa-edit"></i></a>
-                    </p>
-                    {#<a href="{{ path('ubicazioni_index', {search: articolo.codice}) }}" class="card-link">trova</a>#}
+            <div class="col-3 col-lg-2 card-group p-1">
+                <div class="card">
+                    <div>
+                        <h5 class="card-title">{{ articolo.codice }}</h5>
+                        <p class="card-subtitle text-muted">{{ articolo.descrizione }}</p>
+                        <p>pezzi {{ articolo.pezzi }}</p>
+                        <a class="h3 float-right" href="{{ path('persiane_update', {id: articolo.id}) }}"><i class="far fa-edit"></i></a>
+                    </div>
                 </div>
             </div>
         {% else %}
             <h3>Nessun articolo trovato.</h3>
         {% endfor %}
     </div>
+
+    {#<div class="d-flex flex-wrap">#}
+    {#{% for articolo in persiane %}#}
+    {#<div class="card">#}
+    {#<div class="card-body bg-dark">#}
+    {#<h5 class="card-title">{{ articolo.codice }}</h5>#}
+    {#<p class="card-subtitle mb-2 text-muted">{{ articolo.descrizione }}</p>#}
+    {#<p class="card-body ">pezzi {{ articolo.pezzi }} <a class="h3" href="{{ path('persiane_update', {id: articolo.id}) }}"><i class="far fa-edit"></i></a>#}
+    {#</p>#}
+    {#<a href="{{ path('ubicazioni_index', {search: articolo.codice}) }}" class="card-link">trova</a>#}
+    {#</div>#}
+    {#</div>#}
+    {#{% else %}#}
+    {#<h3>Nessun articolo trovato.</h3>#}
+    {#{% endfor %}#}
+    {#</div>#}
 
     {% if persiane.haveToPaginate %}
         <div class="navigation text-center">

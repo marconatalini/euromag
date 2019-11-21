@@ -29,7 +29,7 @@ class LogRepository extends ServiceEntityRepository
     {
         $qb = $this->createQueryBuilder('l')
             ->andWhere('l.timestamp > :val')
-            ->setParameter('val', strtotime('-1 month'))
+            ->setParameter('val', strtotime('-2 month'))
             ->orderBy('l.id', 'DESC')
             ->setMaxResults(1000)
             ;

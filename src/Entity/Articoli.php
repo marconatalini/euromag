@@ -17,7 +17,7 @@ class Articoli
      *
      * See https://symfony.com/doc/current/best_practices/configuration.html#constants-vs-configuration-options
      */
-    public const NUM_ITEMS = 30;
+    public const NUM_ITEMS = 50;
 
     /**
      * @ORM\Id()
