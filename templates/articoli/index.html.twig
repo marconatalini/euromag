@@ -19,7 +19,7 @@
         {% for articolo in articoli %}
             <div class="col-3 col-lg-2 card-group p-1">
                 <div class="card">
-                    <div>
+                    <div class="m-2">
                         <h5>{{ articolo.codice }}</h5>
                         <p class="text-muted">{{ articolo.descrizione }}</p>
                         <a href="{{ path('ubicazioni_index', {search: articolo.codice}) }}" class="h4"><i
