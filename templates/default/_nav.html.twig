@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-md navbar-dark shadow">
+    <a class="navbar-brand" href="{{ path('home') }}"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-map-marker-alt"></i> Ubicazioni
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('ubicazioni_index') }}">Indice</a>
+                    <a class="dropdown-item" href="{{ path('ubicazioni_pdf') }}">Scarica PDF</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ path('ubicazioni_free') }}">Libere</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ path('ubicazioni_pulisci_doppie') }}">Pulizia</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-align-justify"></i> 1-10
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% for i in 1..10 %}
+                        <a class="dropdown-item" href="{{ path('ubicazioni_fila', {fila:i}) }}">{{ i }}</a>
+                    {% endfor %}
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-align-justify"></i> 11-20
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% for i in 11..20 %}
+                        <a class="dropdown-item" href="{{ path('ubicazioni_fila', {fila:i}) }}">{{ i }}</a>
+                    {% endfor %}
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-align-justify"></i> 21-30
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% for i in 21..30 %}
+                        <a class="dropdown-item" href="{{ path('ubicazioni_fila', {fila:i}) }}">{{ i }}</a>
+                    {% endfor %}
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-barcode"></i> Articoli
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('articoli_index') }}">Profili</a>
+                    <a class="dropdown-item" href="{{ path('articoli_new') }}">Aggiungi profili</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ path('persiane_index') }}">Persiane</a>
+                    <a class="dropdown-item" href="{{ path('persiane_new') }}">Aggiungi persiane</a>
+                </div>
+            </li>
+
+            {#<li class="nav-item">
+                <a class="nav-link" href="{{ path('strumenti_ottimizza') }}"><i class="fas fa-life-saver"></i> Strumenti</a>
+            </li>#}
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('logs_index') }}"><i class="fas fa-exclamation-triangle"></i> Azioni</a>
+            </li>
+        </ul>
+    </div>
+</nav>

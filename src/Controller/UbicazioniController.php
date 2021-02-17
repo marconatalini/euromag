@@ -93,9 +93,13 @@ class UbicazioniController extends AbstractController
         foreach ($ids as $id)
         {
             $doppia = $em->getRepository(Ubicazioni::class)->find($id);
-            $em->remove($doppia);
-            $em->flush();
-            $this->addFlash('danger','Ubicazione '.$doppia->getCodice().' vuota e doppia è stata eliminata');
+            if ($ubicazioni->count(['codice' => $doppia->getCodice()])>1){
+                $em->remove($doppia);
+                $em->flush();
+                $this->addFlash('danger','Ubicazione '.$doppia->getCodice().' vuota e doppia è stata eliminata');
+            } else {
+                $this->addFlash('info','Ubicazione '.$doppia->getCodice()." è l'ultima ubicazione libera");
+            }
         }
 
         return $this->render("default/index.html.twig");

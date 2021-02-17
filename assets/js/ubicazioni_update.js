@@ -3,11 +3,21 @@ $(function() {
     // When sport gets selected ...
     search.change(function() {
         // ... retrieve the corresponding form.
-        var form = $(this).closest('form');
+        let form = $(this).closest('form');
         // Simulate form data, but only include the selected sport value.
-        var data = {};
+        let data = {};
         data['filtro'] = search.val();
         // Submit data via AJAX to the form's action path.
+        let overlay = document.querySelector('.overlay');
+        let spinner = document.querySelector('.spinner-border');
+        let blurtarget = document.getElementsByName('ubicazioni_form')[0];
+
+        console.log(blurtarget);
+
+        overlay.style.visibility = 'visible';
+        spinner.style.visibility = 'visible';
+        blurtarget.classList.add('loading');
+
         $.ajax({
             url : window.location.pathname,
             type: form.attr('method'),
@@ -19,6 +29,10 @@ $(function() {
                     $(html).find('#ubicazioni_form_articolo')
                 );
                 // Position field now displays the appropriate positions.
+                overlay.style.visibility = 'hidden';
+                spinner.style.visibility = 'hidden';
+                blurtarget.classList.remove('loading');
+
             }
         });
     });

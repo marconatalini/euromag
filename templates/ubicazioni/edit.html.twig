@@ -7,14 +7,22 @@
     {{ encore_entry_link_tags('css/ubicazioni') }}
 {% endblock %}
 
+{% block main_class %}mt-auto{% endblock %}
+
+
 {% block body %}
 
-    <div class="container">
-        <h1>Assegna profilo ad ubicazione {{ ubicazione.codice }}</h1>
+    <div class="col-12 col-md-6 m-auto text-center p-2">
+        <h3>Ubicazione: {{ ubicazione.fila }} | {{ ubicazione.colonna }} | {{ ubicazione.piano }}</h3>
 
         {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
         {{ form_widget(form) }}
         {{ form_end(form) }}
+        <div class="overlay">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
     </div>
 
 {% endblock %}

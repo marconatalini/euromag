@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Euromag{% endblock %}</title>
         {% block head_css %}
             {{ encore_entry_link_tags('css/app') }}
             {#<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -14,103 +14,27 @@
         {% endblock %}
 
     </head>
-    <body class="d-flex flex-column h-100">
-        <header>
-            <nav class="navbar navbar-expand-md navbar-dark mb-4">
-                <a class="navbar-brand" href="{{ path('home') }}"><i class="fas fa-home"></i> Home </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-map-marker-alt"></i> Ubicazioni
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ path('ubicazioni_index') }}">Indice</a>
-                                <a class="dropdown-item" href="{{ path('ubicazioni_pdf') }}">Scarica PDF</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ path('ubicazioni_free') }}">Libere</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ path('ubicazioni_pulisci_doppie') }}">Pulizia</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-align-justify"></i> 1-10
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {% for i in 1..10 %}
-                                    <a class="dropdown-item" href="{{ path('ubicazioni_fila', {fila:i}) }}">{{ i }}</a>
-                                {% endfor %}
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-align-justify"></i> 11-20
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {% for i in 11..20 %}
-                                    <a class="dropdown-item" href="{{ path('ubicazioni_fila', {fila:i}) }}">{{ i }}</a>
-                                {% endfor %}
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-align-justify"></i> 21-30
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {% for i in 21..30 %}
-                                    <a class="dropdown-item" href="{{ path('ubicazioni_fila', {fila:i}) }}">{{ i }}</a>
-                                {% endfor %}
-                            </div>
-                        </li>
-
-                        <li class="nav-item dropdown ml-4">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-barcode"></i> Articoli
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ path('articoli_index') }}">Profili</a>
-                                <a class="dropdown-item" href="{{ path('articoli_new') }}">Aggiungi profili</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ path('persiane_index') }}">Persiane</a>
-                                <a class="dropdown-item" href="{{ path('persiane_new') }}">Aggiungi persiane</a>
-                            </div>
-                        </li>
-
-                        <li class="nav-item ml-4">
-                            <a class="nav-link" href="{{ path('strumenti_ottimizza') }}"><i class="fas fa-life-saver"></i> Strumenti</a>
-                        </li>
-
-                        <li class="nav-item ml-4">
-                            <a class="nav-link" href="{{ path('logs_index') }}"><i class="fas fa-exclamation-triangle"></i> Azioni</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+    <body class="h-100 d-flex flex-column">
+        <header class="">
+            {% include 'default/_nav.html.twig' %}
         </header>
 
-        <main class="flex-shrink-0" role="main">
+        <main class="{% block main_class %}{% endblock %}" role="main">
             <div class="container-fluid">
                 {# ...or you can read and display every flash message available #}
-            {% for label, messages in app.flashes %}
-                {% for message in messages %}
-                    <div class="alert alert-{{ label }}" role="alert">
-                        {{ message }}
-                    </div>
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }}" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
                 {% endfor %}
-            {% endfor %}
 
-            {% block body %}
-            {% endblock %}
+            {% block body %}{% endblock %}
             </div>
         </main>
-        <footer class="footer mt-auto py-3 text-right">
-            <div class="container">
-                <span class="text-muted text-right">WEBapp realizzata da Marco Natalini 02/2019</span>
-            </div>
+        <footer class="footer py-3 mt-auto text-right">
+            {% include 'default/_footer.html.twig' %}
         </footer>
 
     {% block head_js %}

@@ -13,14 +13,7 @@
     {% set lastFila = 0 %}
     <div class="d-flex flex-wrap">
         {% for u in ubicazioni  %}
-            <div class="ubicazione">
-                <a class="badge
-                    {% if u.articolo is empty %}badge-success{% else %}badge-danger{% endif %}"
-                  href="{{ path('ubicazioni_update', {id: u.id}) }}">
-                    <h3>{{ u.codice }}</h3>
-                </a>
-                <p>{{ u.articolo }}</p>
-            </div>
+            {% include 'ubicazioni/_ubicazione.html.twig' with {'u': u} %}
             {% set count = count + 1 %}
             {% set lastFila = u.fila %}
         {% else %}

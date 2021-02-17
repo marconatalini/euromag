@@ -7,20 +7,26 @@
     {{ encore_entry_link_tags('css/home') }}
 {% endblock %}
 
-{% block body %}
+{% block main_class %}m-auto{% endblock %}
 
+{% block body %}
     <div class="form-container mt-auto">
         <form class="form" action="{{ path('ubicazioni_index', {page : 1}) }}">
-            <input class="form-control form-control-lg" id="formInputCerca" type="search" name="search"
-                   autocomplete="off" placeholder="codice..." aria-label="Cerca">
+            <div class="input-group">
+                <input class="form-control form-control-lg" id="formInputCerca" type="search" name="search"
+                       autocomplete="off" placeholder="codice..." aria-label="Cerca">
+                <div class="input-group-append">
+                    <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">
+            {#<button class="btn btn-lg btn-primary btn-block" type="submit">
                 Trova
-            </button>
+            </button>#}
         </form>
 
         <a class="btn btn-success btn-lg btn-block mt-4" href="{{ path('ubicazioni_free') }}">
-            Ubicazioni LIBERE
+            Ubicazioni LIBERE... <i class="fa fa-arrow-right"></i>
         </a>
     </div>
 

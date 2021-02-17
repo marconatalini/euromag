@@ -69,7 +69,7 @@ class UbicazioniRepository extends ServiceEntityRepository
         $sql = "select id from ubicazioni u1 where
             exists (select * from (
             select codice, count(codice) c FROM ubicazioni u2 group by codice having c >1) u3
-            where u3.codice = u1.codice) and u1.articolo_id is null order by u1.codice";
+            where u3.codice = u1.codice) and u1.articolo_id is null order by u1.id DESC";
 
         $em = $this->getEntityManager();
         $stmt = $em->getConnection()->prepare($sql);

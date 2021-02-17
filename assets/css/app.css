@@ -1,2 +1,14 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~@fortawesome/fontawesome-free/css/all.css";
+
+nav {
+    background-color: rgba(0,0,0,0.2);
+}
+
+a.navbar-brand{
+    width: 184px;
+    height: 49px;
+    background: url(../images/logo.png) no-repeat;
+    background-size: 184px 49px;
+    margin-top: 10px;
+}

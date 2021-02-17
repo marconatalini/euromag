@@ -34,7 +34,7 @@ class UbicazioniForm extends AbstractType
     {
 
         $builder
-            ->add('codice', TextType::class, ['attr' => array('readonly'=>'')])
+            ->add('codice', HiddenType::class, ['attr' => array('readonly'=>'')])
             ->add('fila', HiddenType::class, ['attr' => array('readonly'=>'')])
             ->add('colonna', HiddenType::class, ['attr' => array('readonly'=>'')])
             ->add('piano', HiddenType::class, ['attr' => array('readonly'=>'')])
