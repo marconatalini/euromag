@@ -1,19 +1,10 @@
-{#
-<div class="ubicazione">
-    <a class="badge
-                    {% if u.articolo is empty %}badge-success{% else %}badge-danger{% endif %}"
-       href="{{ path('ubicazioni_update', {id: u.id}) }}">
-        <h3>{{ u.codice }}</h3>
-    </a>
-    <p>{{ u.articolo }}</p>
-</div>
-#}
-
 <div class="card {% if u.articolo is empty %}free{% else %}full{% endif %} m-2">
-    <div class="card-body">
-        <div class="card-title"><a class="btn btn-outline-light" href="{{ path('ubicazioni_update', {id: u.id}) }}"><h3>{{ u.codice }}</h3></a></div>
-        <div class="card-text">
-            <p>{{ u.articolo }}</p>
+    <div class="card-body p-2">
+        <div class="card-title">
+            <a class="btn btn-outline-light" href="{{ path('ubicazioni_update', {id: u.id}) }}">
+                <h3>{{ u.codice }}</h3>
+                <p>{{ u.articolo }}{% if u.articolo is empty %}libera{% endif %}</p>
+            </a>
         </div>
     </div>
 </div>

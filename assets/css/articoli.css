@@ -1,7 +1,13 @@
 body {
     background: url(../images/plant-2639751_1280_dark.jpg) no-repeat center fixed;
     background-size: cover;
-    /*color: white;*/
+    color: white;
+}
+
+.card {
+    width: 12rem;
+    min-height: 9rem;
+    color: black;
 }
 
 /*.card {*/

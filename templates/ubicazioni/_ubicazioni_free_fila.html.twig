@@ -1,13 +1,14 @@
 <div class="d-flex flex-wrap">
     {% for u in ubicazioniLibereFila  %}
-        <div class="ubicazione">
+        {% include 'ubicazioni/_ubicazione.html.twig' with {'u' : u} %}
+        {#<div class="ubicazione">
             <a class="badge
                     {% if u.articolo is empty %}badge-success{% else %}badge-danger{% endif %}"
                href="{{ path('ubicazioni_update', {id: u.id}) }}">
                 <h3>{{ u.codice }}</h3>
             </a>
             <p>{{ u.articolo }}</p>
-        </div>
+        </div>#}
     {% else %}
         <tr>Nessuna ubicazione libera in questa fila.</tr>
     {% endfor %}

@@ -7,12 +7,14 @@
     {{ encore_entry_link_tags('css/articoli') }}
 {% endblock %}
 
-{% block body %}
-<div class="container text-light">
-    <h1>{{ formTitle }}</h1>
+{% block main_class %}mt-auto{% endblock %}
 
-    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
-</div>
+{% block body %}
+    <div class="col-12 col-md-6 m-auto text-center p-2">
+        <h3>{{ formTitle }}</h3>
+
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
 {% endblock %}

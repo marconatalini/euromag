@@ -1,0 +1,26 @@
+<div class="card mr-3 mb-2">
+    <div class="card-body p-2">
+        <div class="card-title">
+            <h5>{{ articolo.codice }}</h5>
+        </div>
+        <div class="cart-text">
+            <p class="">{{ articolo.descrizione }} </p>
+            <a class="card-link h1">{{ articolo.pezzi}} </a>
+
+            <a class="card-link float-right" href="{{ path('persiane_update', {id: articolo.id}) }}">Modifica
+                {#<i class="far fa-edit"></i>#}
+            </a>
+        </div>
+    </div>
+</div>
+
+{#<div class="col-3 col-lg-2 card-group p-1">
+    <div class="card">
+        <div class="m-2">
+            <h5 class="card-title">{{ persiana.codice }}</h5>
+            <a class="h3 float-right" href="{{ path('persiane_update', {id: persiana.id}) }}"><i class="far fa-edit"></i></a>
+            <h1 class="text-center">{{ persiana.pezzi }}</h1>
+            <p class="card-subtitle text-muted">{{ persiana.descrizione }}</p>
+        </div>
+    </div>
+</div>#}

@@ -4,32 +4,12 @@ body {
     color: white;
     /*perspective: 1000px;*/
 }
-/*
-
-.table{
-    color: inherit;
-}
-
-.ubicazione {
-    margin: 10px;
-}
-
-.badge:hover{
-    transform-origin: center;
-    transform: scale(1.25);
-}
-
-*/
 
 .card {
     width: 8rem;
     text-align: center;
-    transition: all 0.5s ease;
-    transform-style: preserve-3d;
-}
-
-.card:hover{
-    transform: rotateX(40deg);
+    /*transition: all 0.5s ease;*/
+    /*transform-style: preserve-3d;*/
 }
 
 .free{
@@ -56,12 +36,6 @@ body {
     top: 40%;
     left: 50%;
     visibility: hidden;
-    /*background: #2a2a2a55;*/
-    /*width: 100%;*/
-    /*display:block;*/
-    /*text-align:center;*/
-    /*height: 300px;*/
-    /*color: #FFF;*/
     z-index: 1000;
 }
 

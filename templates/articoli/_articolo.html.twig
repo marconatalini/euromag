@@ -1,0 +1,17 @@
+<div class="card mr-3 mb-2">
+    <div class="card-body p-2">
+        <div class="card-title">
+            <h5>{{ articolo.codice }}</h5>
+        </div>
+        <div class="cart-text">
+            <p class="text-muted">{{ articolo.descrizione }} </p>
+            <p class="text-muted">{{ articolo.note}} </p>
+            <a class="card-link" href="{{ path('ubicazioni_index', {search: articolo.codice}) }}">Trova
+                {#<i class="fas fa-search"></i>#}
+            </a>
+            <a class="card-link float-right" href="{{ path('articoli_update', {id: articolo.id}) }}">Modifica
+                {#<i class="far fa-edit"></i>#}
+            </a>
+        </div>
+    </div>
+</div>
